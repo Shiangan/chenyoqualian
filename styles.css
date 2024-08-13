@@ -17,12 +17,12 @@ header {
 }
 
 header .logo {
-    max-width: 100px;
+    max-width: 80px;
     height: auto;
 }
 
 header .cross-symbol {
-    max-width: 100px;
+    max-width: 80px;
     height: auto;
     position: absolute;
     top: 20px;
@@ -240,4 +240,68 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    header .logo,
+    header .cross-symbol {
+        max-width: 60px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    header .verse {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    header .logo,
+    header .cross-symbol {
+        max-width: 50px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    header .verse {
+        font-size: 12px;
+    }
+
+    #comment-form button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 18px;
+    }
+
+    header .verse {
+        font-size: 10px;
+    }
+
+    #comment-form input,
+    #comment-form textarea {
+        font-size: 14px;
+    }
+
+    #comment-form button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .flower-basket-item img {
+        max-width: 80px;
+    }
+
+    .flower-basket-item .price {
+        font-size: 14px;
+    }
 }
