@@ -3,17 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const backgroundMusic = document.getElementById("background-music");
     if (backgroundMusic) {
         backgroundMusic.play().catch(error => {
-            console.warn("自動播放被阻止:", error);
+            console.warn("自动播放被阻止:", error);
             document.addEventListener("click", () => {
                 backgroundMusic.play().catch(err => console.warn("点击后播放失败:", err));
             }, { once: true });
         });
     }
 
-    // Timeline animation
+    // 时间轴动画
     function animateTimeline() {
         const timelineBlocks = document.querySelectorAll(".VivaTimeline .event");
-        timelineBlocks.forEach(function (block) {
+        timelineBlocks.forEach(block => {
             const rect = block.getBoundingClientRect();
             if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
                 block.classList.add("animated");
@@ -23,27 +23,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Window scroll event for timeline animation
     window.addEventListener("scroll", animateTimeline);
-
-    // Initial timeline animation check
     animateTimeline();
 
-    // 评论表单提交处理
+    // 评论表单处理
     const commentForm = document.getElementById("comment-form");
     const commentsContainer = document.getElementById("comments-container");
     let comments = JSON.parse(localStorage.getItem("comments")) || [];
 
+    function escapeHtml(html) {
+        const text = document.createTextNode(html);
+        const div = document.createElement('div');
+        div.appendChild(text);
+        return div.innerHTML;
+    }
+
     function displayComments() {
         commentsContainer.innerHTML = comments
-            .map(
-                (comment, index) => `
+            .map((comment, index) => `
                 <div class="comment">
-                    <strong>${comment.name}</strong>: ${comment.message}
-                    <button class="edit-comment" data-index="${index}">編輯</button>
-                    <button class="delete-comment" data-index="${index}">刪除</button>
-                </div>`
-            )
+                    <strong>${escapeHtml(comment.name)}</strong>: ${escapeHtml(comment.message)}
+                    ${comment.username === getCurrentUsername() || isAdmin() ? `
+                    <button class="edit-comment" data-index="${index}">编辑</button>
+                    <button class="delete-comment" data-index="${index}">删除</button>` : ''}
+                </div>`)
             .join("");
     }
 
@@ -54,31 +57,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     commentForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        const name = document.getElementById("comment-name").value;
-        const message = document.getElementById("comment-message").value;
-        comments.push({ name, message });
-        saveComments();
-        commentForm.reset();
+        const name = document.getElementById("comment-name").value.trim();
+        const message = document.getElementById("comment-message").value.trim();
+        if (name && message) {
+            comments.push({ name, message, username: getCurrentUsername(), isAdmin: false }); // `isAdmin` 根据用户角色来设置
+            saveComments();
+            commentForm.reset();
+        } else {
+            alert("姓名和留言不能为空！");
+        }
     });
 
-    // 处理编辑和删除按钮
     commentsContainer.addEventListener("click", function (e) {
         const index = e.target.dataset.index;
         if (e.target.classList.contains("edit-comment")) {
-            const newMessage = prompt("編輯留言:", comments[index].message);
+            const newMessage = prompt("编辑留言:", comments[index].message);
             if (newMessage !== null) {
                 comments[index].message = newMessage;
                 saveComments();
             }
         } else if (e.target.classList.contains("delete-comment")) {
-            if (confirm("確定要刪除此留言嗎?")) {
-                comments.splice(index, 1);
-                saveComments();
+            if (confirm("确定要删除此留言吗？")) {
+                if (comments[index].username === getCurrentUsername() || isAdmin()) {
+                    comments.splice(index, 1);
+                    saveComments();
+                } else {
+                    alert("您没有权限删除此留言");
+                }
             }
         }
     });
 
-    // 显示评论
+    function getCurrentUsername() {
+        // 从登录系统中获取当前用户的用户名
+        return "current_user";
+    }
+
+    function isAdmin() {
+        // 从登录系统中获取当前用户是否是管理员
+        return false;
+    }
+
     displayComments();
 
     // 显示花篮区
@@ -87,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         flowerBasketGallery.style.display = "block";
     });
 
-    // 显示详细地图并导航到怀爱馆
+    // 显示地图
     document.getElementById("show-map").addEventListener("click", function () {
         window.open("https://www.google.com/maps/dir/?api=1&destination=懷愛館（第二殯儀館）景行樓3F［至仁二廳］", "_blank");
     });
