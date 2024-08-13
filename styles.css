@@ -1,28 +1,30 @@
 /* 基本样式 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #f9f9f9;
+    background-color: #f0f8ff; /* 淡藍色背景 */
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 /* 头部样式 */
 header {
-    background: #fff;
-    border-bottom: 2px solid #e0e0e0;
+    background: #ffffff; /* 白色背景 */
+    border-bottom: 2px solid #d6e4f0; /* 淡藍色邊框 */
     text-align: center;
     padding: 20px;
     position: relative;
 }
 
 header .logo {
-    max-width: 80px;
+    max-width: 120px; /* 調整Logo大小 */
     height: auto;
+    margin-bottom: 10px;
 }
 
 header .cross-symbol {
-    max-width: 80px;
+    max-width: 100px;
     height: auto;
     position: absolute;
     top: 20px;
@@ -30,14 +32,14 @@ header .cross-symbol {
 }
 
 header h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    color: #2e4a62; /* 深藍色 */
     margin: 10px 0;
 }
 
 header .verse {
-    font-size: 16px;
-    color: #777;
+    font-size: 18px;
+    color: #6c7b8b; /* 淡灰藍色 */
     margin: 0;
 }
 
@@ -55,28 +57,22 @@ main {
 #main-photo {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#motto {
-    font-size: 20px;
-    color: #555;
-    text-align: center;
-    margin: 20px 0;
-}
-
-/* 纸质讣告 */
+/* 讣告 */
 .paper-obituary-section {
     text-align: center;
+    margin: 20px 0;
 }
 
 #paper-obituary {
     max-width: 100%;
     height: auto;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #d6e4f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* 时间轴 */
@@ -101,10 +97,10 @@ main {
 
 .VivaTimeline .event {
     padding: 20px;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border: 1px solid #d6e4f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: 10px 0;
     transition: all 0.3s ease-in-out;
@@ -123,10 +119,10 @@ main {
 /* 评论区 */
 #comments-section {
     margin-top: 20px;
-    background: #fff;
+    background: #ffffff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #comments-section form {
@@ -138,26 +134,26 @@ main {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #d6e4f0;
+    border-radius: 10px;
 }
 
 #comment-form button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #4a90e2; /* 藍色 */
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 #comment-form button:hover {
-    background-color: #0056b3;
+    background-color: #357abd; /* 深藍色 */
 }
 
 .comment {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #d6e4f0;
 }
 
 .comment:last-child {
@@ -168,7 +164,7 @@ main {
 .delete-comment {
     background: none;
     border: none;
-    color: #007bff;
+    color: #4a90e2;
     cursor: pointer;
     margin-left: 10px;
 }
@@ -186,8 +182,8 @@ main {
 #donate-flower img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .flower-basket-item {
@@ -197,7 +193,7 @@ main {
 }
 
 .flower-basket-item img {
-    max-width: 100px;
+    max-width: 120px;
     height: auto;
 }
 
@@ -210,21 +206,21 @@ main {
 #show-flower-baskets {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #4a90e2; /* 藍色 */
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 #show-flower-baskets:hover {
-    background-color: #0056b3;
+    background-color: #357abd; /* 深藍色 */
 }
 
 /* 页脚 */
 footer {
-    background: #fff;
-    border-top: 2px solid #e0e0e0;
+    background: #ffffff;
+    border-top: 2px solid #d6e4f0;
     text-align: center;
     padding: 20px;
 }
@@ -234,74 +230,10 @@ footer p {
 }
 
 footer a {
-    color: #007bff;
+    color: #4a90e2;
     text-decoration: none;
 }
 
 footer a:hover {
     text-decoration: underline;
-}
-
-/* 响应式设计 */
-@media (max-width: 1200px) {
-    header .logo,
-    header .cross-symbol {
-        max-width: 60px;
-    }
-
-    header h1 {
-        font-size: 22px;
-    }
-
-    header .verse {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    header .logo,
-    header .cross-symbol {
-        max-width: 50px;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-
-    header .verse {
-        font-size: 12px;
-    }
-
-    #comment-form button {
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 18px;
-    }
-
-    header .verse {
-        font-size: 10px;
-    }
-
-    #comment-form input,
-    #comment-form textarea {
-        font-size: 14px;
-    }
-
-    #comment-form button {
-        padding: 8px;
-        font-size: 14px;
-    }
-
-    .flower-basket-item img {
-        max-width: 80px;
-    }
-
-    .flower-basket-item .price {
-        font-size: 14px;
-    }
 }
