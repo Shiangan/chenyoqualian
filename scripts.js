@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const name = document.getElementById("comment-name").value.trim();
         const message = document.getElementById("comment-message").value.trim();
         if (name && message) {
-            comments.push({ name, message, username: getCurrentUsername(), isAdmin: false }); // `isAdmin` 根据用户角色来设置
+            comments.push({ name, message, username: getCurrentUsername(), isAdmin: isAdmin() });
             saveComments();
             commentForm.reset();
         } else {
@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function getCurrentUsername() {
-        // 从登录系统中获取当前用户的用户名
-        return "current_user";
+        const user = JSON.parse(localStorage.getItem('user'));
+        return user ? user.username : null;
     }
 
     function isAdmin() {
-        // 从登录系统中获取当前用户是否是管理员
-        return false;
+        const user = JSON.parse(localStorage.getItem('user'));
+        return user && user.role === 'admin';
     }
 
     displayComments();
