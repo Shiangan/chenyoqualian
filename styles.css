@@ -2,7 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #f0f8ff; /* 淡藍色背景 */
+    background-color: #f0f8ff; /* 淡蓝色背景 */
     color: #333;
     margin: 0;
     padding: 0;
@@ -11,16 +11,16 @@ body {
 /* 头部样式 */
 header {
     background: #ffffff; /* 白色背景 */
-    border-bottom: 2px solid #d6e4f0; /* 淡藍色邊框 */
+    border-bottom: 2px solid #d6e4f0; /* 淡蓝色边框 */
     text-align: center;
     padding: 20px;
     position: relative;
 }
 
 header .logo {
-    max-width: 120px; /* 調整Logo大小 */
+    max-width: 120px; /* 调整Logo大小 */
     height: auto;
-    margin-bottom: 10px;
+    margin: 0 auto; /* 使Logo居中 */
 }
 
 header .cross-symbol {
@@ -33,13 +33,13 @@ header .cross-symbol {
 
 header h1 {
     font-size: 28px;
-    color: #2e4a62; /* 深藍色 */
+    color: #2e4a62; /* 深蓝色 */
     margin: 10px 0;
 }
 
 header .verse {
     font-size: 18px;
-    color: #6c7b8b; /* 淡灰藍色 */
+    color: #6c7b8b; /* 淡灰蓝色 */
     margin: 0;
 }
 
@@ -76,29 +76,6 @@ main {
 }
 
 /* 时间轴事件的样式 */
-.VivaTimeline .event {
-    padding: 20px;
-    background: #ffffff;
-    border: 1px solid #d6e4f0;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin: 10px 0;
-    transition: all 0.3s ease-in-out;
-}
-
-/* 事件动画效果 */
-.VivaTimeline .event.animate {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.VivaTimeline .event:not(.animate) {
-    transform: translateY(20px);
-    opacity: 0;
-}
-
-/* 日期的样式 */
 .VivaTimeline dt {
     font-size: 18px; /* 增大字体大小 */
     font-weight: bold; /* 粗体 */
@@ -111,6 +88,27 @@ main {
     text-align: center; /* 居中对齐 */
 }
 
+.VivaTimeline .event {
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #d6e4f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 10px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.VivaTimeline .event.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.VivaTimeline .event:not(.animate) {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
 /* 调整左侧事件样式 */
 .VivaTimeline .pos-left .event {
     border-right: 5px solid #4a90e2; /* 边框颜色 */
@@ -120,7 +118,6 @@ main {
 .VivaTimeline .pos-right .event {
     border-left: 5px solid #4a90e2; /* 边框颜色 */
 }
-
 
 /* 评论区 */
 #comments-section {
@@ -146,20 +143,23 @@ main {
 
 #comment-form button {
     padding: 10px 20px;
-    background-color: #4a90e2; /* 藍色 */
+    background-color: #4a90e2; /* 蓝色 */
     color: #ffffff;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 16px; /* 提高按钮可读性 */
 }
 
 #comment-form button:hover {
-    background-color: #357abd; /* 深藍色 */
+    background-color: #357abd; /* 深蓝色 */
 }
 
 .comment {
-    padding: 10px;
+    padding: 15px;
     border-bottom: 1px solid #d6e4f0;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .comment:last-child {
@@ -173,16 +173,19 @@ main {
     color: #4a90e2;
     cursor: pointer;
     margin-left: 10px;
+    font-size: 14px; /* 增强可读性 */
 }
 
 .edit-comment:hover,
 .delete-comment:hover {
     text-decoration: underline;
+    color: #357abd;
 }
 
 /* 花篮区 */
 #donate-flower {
     margin-top: 20px;
+    text-align: center;
 }
 
 #donate-flower img {
@@ -194,33 +197,34 @@ main {
 
 .flower-basket-item {
     display: inline-block;
-    margin: 10px;
+    margin: 15px;
     text-align: center;
 }
 
 .flower-basket-item img {
-    max-width: 120px;
+    max-width: 150px;
     height: auto;
 }
 
 .flower-basket-item .price {
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #show-flower-baskets {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #4a90e2; /* 藍色 */
+    padding: 12px 24px;
+    background-color: #4a90e2; /* 蓝色 */
     color: #ffffff;
     text-decoration: none;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 16px; /* 增强按钮可读性 */
 }
 
 #show-flower-baskets:hover {
-    background-color: #357abd; /* 深藍色 */
+    background-color: #357abd; /* 深蓝色 */
 }
 
 /* 页脚 */
