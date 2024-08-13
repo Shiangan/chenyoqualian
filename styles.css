@@ -1,0 +1,243 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* 头部样式 */
+header {
+    background: #fff;
+    border-bottom: 2px solid #e0e0e0;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+header .logo {
+    max-width: 100px;
+    height: auto;
+}
+
+header .cross-symbol {
+    max-width: 100px;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 10px 0;
+}
+
+header .verse {
+    font-size: 16px;
+    color: #777;
+    margin: 0;
+}
+
+/* 主要内容 */
+main {
+    padding: 20px;
+}
+
+/* 主照片区 */
+.main-photo-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#main-photo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#motto {
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 纸质讣告 */
+.paper-obituary-section {
+    text-align: center;
+}
+
+#paper-obituary {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 时间轴 */
+#timeline {
+    margin-top: 20px;
+}
+
+.VivaTimeline {
+    position: relative;
+}
+
+.VivaTimeline dl {
+    margin: 0;
+    padding: 0;
+}
+
+.VivaTimeline dt,
+.VivaTimeline dd {
+    margin: 0;
+    padding: 0;
+}
+
+.VivaTimeline .event {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 10px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.VivaTimeline .event.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.VivaTimeline .event:not(.animate) {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+/* 评论区 */
+#comments-section {
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#comments-section form {
+    margin-bottom: 20px;
+}
+
+#comment-form input,
+#comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#comment-form button:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.edit-comment,
+.delete-comment {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.edit-comment:hover,
+.delete-comment:hover {
+    text-decoration: underline;
+}
+
+/* 花篮区 */
+#donate-flower {
+    margin-top: 20px;
+}
+
+#donate-flower img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flower-basket-item {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.flower-basket-item img {
+    max-width: 100px;
+    height: auto;
+}
+
+.flower-basket-item .price {
+    font-size: 16px;
+    color: #333;
+    margin-top: 5px;
+}
+
+#show-flower-baskets {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#show-flower-baskets:hover {
+    background-color: #0056b3;
+}
+
+/* 页脚 */
+footer {
+    background: #fff;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
