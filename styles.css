@@ -282,6 +282,13 @@ footer a:hover {
     }
 }
 
+share-section img {
+    max-width: 100%; /* 确保图片不超过容器宽度 */
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 @media (max-width: 767px) {
     header .logo {
         max-width: 80px; /* 手机设备上调整Logo大小 */
