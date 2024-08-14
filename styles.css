@@ -1,14 +1,14 @@
 /* 字体引入 */
 @font-face {
     font-family: 'CustomFont';
-    src: url('fonts/文鼎陈森田字体.ttf') format('truetype');
+    src: url('毛笔体.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 /* 基本样式 */
 body {
-    font-family: 'CustomFont', Arial, Helvetica, sans-serif; /* 添加字体备选方案 */
+    font-family: '毛笔体.ttf', Arial, Helvetica, sans-serif; /* 添加字体备选方案 */
     line-height: 1.6;
     background-color: #f0f8ff; /* 淡蓝色背景 */
     color: #333;
