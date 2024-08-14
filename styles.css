@@ -1,9 +1,7 @@
 /* 字体引入 */
 @font-face {
     font-family: 'CustomFont';
-    src: url('毛笔体.woff2') format('woff2'),
-         url('毛笔体.woff') format('woff'),
-         url('毛笔体.ttf') format('truetype');
+    src: url('毛笔体.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -28,9 +26,17 @@ header {
 }
 
 header .logo {
-    max-width: 120px; /* 调整Logo大小 */
+    max-width: 100px; /* 调整Logo大小 */
     height: auto;
     margin: 0 auto; /* 使Logo居中 */
+}
+
+header .large-image {
+    max-width: 120px; /* 调整下面图片大小 */
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px; /* 圆角效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
 }
 
 header .cross-symbol {
@@ -274,40 +280,4 @@ footer a:hover {
     .flower-basket-item img {
         max-width: 200px; /* 增大花篮图像在桌面设备上的最大宽度 */
     }
-}
-
-@media (max-width: 767px) {
-    header .cross-symbol {
-        max-width: 80px; /* 在移动设备上调整十字标志大小 */
-    }
-
-    header h1 {
-        font-size: 24px; /* 在移动设备上调整标题字体大小 */
-    }
-
-    header .verse {
-        font-size: 16px; /* 在移动设备上调整经文字体大小 */
-    }
-
-    #donate-flower img {
-        max-width: 100%; /* 确保移动设备上花篮图像的最大宽度 */
-    }
-
-    .flower-basket-item img {
-        max-width: 120px; /* 确保移动设备上花篮图像的最大宽度 */
-    }
-}
-
-/* 自定义滚动条样式 */
-::-webkit-scrollbar {
-    width: 10px; /* 滚动条宽度 */
-}
-
-::-webkit-scrollbar-thumb {
-    background: #4a90e2; /* 滚动条滑块颜色 */
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #357abd; /* 滚动条滑块悬停颜色 */
 }
