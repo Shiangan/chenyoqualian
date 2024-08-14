@@ -1,7 +1,7 @@
 /* 字体引入 */
 @font-face {
     font-family: 'CustomFont';
-    src: url('清松手写体5..ttf') format('truetype');
+    src: url('清松手写体5.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
