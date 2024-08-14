@@ -8,7 +8,7 @@
 
 /* 基本样式 */
 body {
-    font-family: '毛笔体.ttf', Arial, Helvetica, sans-serif; /* 添加字体备选方案 */
+    font-family: 'CustomFont', Arial, Helvetica, sans-serif; /* 使用自定义字体，并添加备选方案 */
     line-height: 1.6;
     background-color: #f0f8ff; /* 淡蓝色背景 */
     color: #333;
@@ -36,7 +36,8 @@ header .cross-symbol {
     height: auto;
     position: absolute;
     top: 50px;
-    margin: 0 auto;;
+    left: 50%;
+    transform: translateX(-50%); /* 居中对齐 */
 }
 
 header h1 {
