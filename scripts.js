@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
         playMusic();
+        // 用户第一次点击页面时播放音乐
         document.addEventListener("click", playMusic, { once: true });
     }
 
@@ -22,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
             timelineBlocks.forEach(block => {
                 const rect = block.getBoundingClientRect();
                 if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
-                    block.classList.add("animated");
+                    block.classList.add("animate");
                 } else {
-                    block.classList.remove("animated");
+                    block.classList.remove("animate");
                 }
             });
             isAnimating = false;
