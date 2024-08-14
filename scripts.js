@@ -2,24 +2,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // 背景音乐自动播放
     const backgroundMusic = document.getElementById("background-music");
     if (backgroundMusic) {
-        backgroundMusic.play().catch(error => {
-            console.warn("自动播放被阻止:", error);
-            document.addEventListener("click", () => {
-                backgroundMusic.play().catch(err => console.warn("点击后播放失败:", err));
-            }, { once: true });
-        });
+        function playMusic() {
+            backgroundMusic.play().catch(error => {
+                console.warn("自动播放被阻止:", error);
+            });
+        }
+        playMusic();
+        document.addEventListener("click", playMusic, { once: true });
     }
 
     // 时间轴动画
+    let isAnimating = false;
+
     function animateTimeline() {
-        const timelineBlocks = document.querySelectorAll(".VivaTimeline .event");
-        timelineBlocks.forEach(block => {
-            const rect = block.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
-                block.classList.add("animated");
-            } else {
-                block.classList.remove("animated");
-            }
+        if (isAnimating) return;
+        isAnimating = true;
+        requestAnimationFrame(() => {
+            const timelineBlocks = document.querySelectorAll(".VivaTimeline .event");
+            timelineBlocks.forEach(block => {
+                const rect = block.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
+                    block.classList.add("animated");
+                } else {
+                    block.classList.remove("animated");
+                }
+            });
+            isAnimating = false;
         });
     }
 
@@ -57,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     commentForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        const name = document.getElementById("comment-name").value.trim();
-        const message = document.getElementById("comment-message").value.trim();
+        const name = escapeHtml(document.getElementById("comment-name").value.trim());
+        const message = escapeHtml(document.getElementById("comment-message").value.trim());
         if (name && message) {
             comments.push({ name, message, username: getCurrentUsername(), isAdmin: isAdmin() });
             saveComments();
@@ -73,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.target.classList.contains("edit-comment")) {
             const newMessage = prompt("编辑留言:", comments[index].message);
             if (newMessage !== null) {
-                comments[index].message = newMessage;
+                comments[index].message = escapeHtml(newMessage);
                 saveComments();
             }
         } else if (e.target.classList.contains("delete-comment")) {
@@ -103,11 +111,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // 显示花篮区
     const flowerBasketGallery = document.getElementById("flower-basket-gallery");
     document.getElementById("show-flower-baskets").addEventListener("click", function () {
-        flowerBasketGallery.style.display = "block";
+        if (flowerBasketGallery.style.display === "block") {
+            flowerBasketGallery.style.display = "none";
+        } else {
+            flowerBasketGallery.style.display = "block";
+        }
     });
 
     // 显示地图
     document.getElementById("show-map").addEventListener("click", function () {
-        window.open("https://www.google.com/maps/dir/?api=1&destination=懷愛館（第二殯儀館）景行樓3F［至仁二廳］", "_blank");
+        try {
+            window.open("https://www.google.com/maps/dir/?api=1&destination=懷愛館（第二殯儀館）景行樓3F［至仁二廳］", "_blank");
+        } catch (error) {
+            console.error("打开地图失败:", error);
+        }
     });
 });
