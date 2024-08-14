@@ -137,6 +137,11 @@ main {
 }
 
 /* 评论区 */
+/* 留言區字體設定 */
+#comments-section {
+    font-family: 'ChenYuan', sans-serif; /* 使用辰魚落雁體 */
+
+
 #comments-section {
     margin: 20px auto; /* 居中显示 */
     max-width: 800px; /* 限制评论区宽度 */
