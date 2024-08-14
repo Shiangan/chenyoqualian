@@ -35,8 +35,8 @@ header .cross-symbol {
     max-width: 100px;
     height: auto;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    margin: 0 auto;;
 }
 
 header h1 {
