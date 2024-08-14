@@ -49,7 +49,7 @@ header .cross-symbol {
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: 35px;
     color: #2e4a62; /* 深蓝色 */
     margin: 10px 0;
 }
@@ -283,7 +283,7 @@ footer a:hover {
 }
 
 share-section img {
-    max-width: 100%; /* 确保图片不超过容器宽度 */
+    max-width: 30%; /* 确保图片不超过容器宽度 */
     height: auto;
     margin: 0 auto;
     display: block;
