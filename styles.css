@@ -1,13 +1,14 @@
+/* 字体引入 */
 @font-face {
     font-family: 'CustomFont';
-    src: url('文鼎陈森田字体.ttf') format('truetype');
+    src: url('fonts/文鼎陈森田字体.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 /* 基本样式 */
 body {
-    font-family: 'CustomFont', sans-serif;
+    font-family: 'CustomFont', Arial, Helvetica, sans-serif; /* 添加字体备选方案 */
     line-height: 1.6;
     background-color: #f0f8ff; /* 淡蓝色背景 */
     color: #333;
@@ -128,9 +129,10 @@ main {
 
 /* 评论区 */
 #comments-section {
-    margin-top: 20px;
-    background: #ffffff;
+    margin: 20px auto; /* 居中显示 */
+    max-width: 800px; /* 限制评论区宽度 */
     padding: 20px;
+    background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
