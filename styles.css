@@ -137,11 +137,6 @@ main {
 }
 
 /* 评论区 */
-/* 留言區字體設定 */
-#comments-section {
-    font-family: 'ChenYuan', sans-serif; /* 使用辰魚落雁體 */
-
-
 #comments-section {
     margin: 20px auto; /* 居中显示 */
     max-width: 800px; /* 限制评论区宽度 */
@@ -284,5 +279,19 @@ footer a:hover {
 
     .flower-basket-item img {
         max-width: 200px; /* 增大花篮图像在桌面设备上的最大宽度 */
+    }
+}
+
+@media (max-width: 767px) {
+    header .logo {
+        max-width: 80px; /* 手机设备上调整Logo大小 */
+    }
+
+    header .large-image {
+        max-width: 120px; /* 手机设备上调整下面图片大小 */
+    }
+
+    .flower-basket-item img {
+        max-width: 120px; /* 手机设备上调整花篮图像大小 */
     }
 }
