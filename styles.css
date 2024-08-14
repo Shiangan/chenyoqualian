@@ -1,7 +1,7 @@
 /* 字体引入 */
 @font-face {
     font-family: 'CustomFont';
-    src: url('华康钢笔体W2.ttc') format('truetype');
+    src: url('隨風體.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
