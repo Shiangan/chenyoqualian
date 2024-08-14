@@ -55,7 +55,7 @@ main {
 }
 
 #main-photo {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -251,7 +251,7 @@ footer a:hover {
 /* 响应式设计 */
 @media (min-width: 768px) {
     .main-photo-section img {
-        max-width: 100%; /* 使主照片在桌面设备上最大宽度为容器的100% */
+        max-width: 80%; /* 使主照片在桌面设备上最大宽度为容器的100% */
     }
 
     #paper-obituary {
