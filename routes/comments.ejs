@@ -1,0 +1,46 @@
+<!-- views/comments.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+</head>
+<body>
+    <h1>留言列表</h1>
+    <form action="/comments" method="POST">
+        <textarea name="content" placeholder="写下你的留言"></textarea>
+        <button type="submit">发布</button>
+    </form>
+
+    <div id="comments">
+        <% comments.forEach(comment => { %>
+            <div class="comment">
+                <p><%= comment.content %></p>
+                <p>由 <%= comment.userId.username %> 于 <%= comment.createdAt.toDateString() %> 发布</p>
+                <% if (comment.userId._id.toString() === user._id.toString() || user.isAdmin) { %>
+                    <button onclick="deleteComment('<%= comment._id %>')">删除</button>
+                <% } %>
+            </div>
+        <% }) %>
+    </div>
+
+    <script>
+    function deleteComment(commentId) {
+        fetch(`/comments/${commentId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => {
+            if (response.ok) {
+                // 重新加载留言列表
+                location.reload();
+            } else {
+                alert('删除失败');
+            }
+        });
+    }
+    </script>
+</body>
+</html>
