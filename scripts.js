@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.warn("自动播放被阻止:", error);
             });
         }
+        // 自动播放
         playMusic();
         // 用户第一次点击页面时播放音乐
         document.addEventListener("click", playMusic, { once: true });
@@ -38,7 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
     // 评论表单处理
     const commentForm = document.getElementById("comment-form");
     const commentsContainer = document.getElementById("comments-container");
-    let comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+    // 从服务器获取评论
+    async function fetchComments() {
+        try {
+            const response = await fetch('/api/comments');
+            const comments = await response.json();
+            displayComments(comments);
+        } catch (error) {
+            console.error("获取评论失败:", error);
+        }
+    }
 
     function escapeHtml(html) {
         const text = document.createTextNode(html);
@@ -47,55 +58,70 @@ document.addEventListener("DOMContentLoaded", function () {
         return div.innerHTML;
     }
 
-    function displayComments() {
+    function displayComments(comments) {
         commentsContainer.innerHTML = comments
-            .map((comment, index) => `
+            .map(comment => `
                 <div class="comment">
                     <strong>${escapeHtml(comment.name)}</strong>: ${escapeHtml(comment.message)}
                     ${comment.username === getCurrentUsername() || isAdmin() ? `
-                    <button class="edit-comment" data-index="${index}">编辑</button>
-                    <button class="delete-comment" data-index="${index}">删除</button>` : ''}
+                    <button class="edit-comment" data-id="${comment.id}">编辑</button>
+                    <button class="delete-comment" data-id="${comment.id}">删除</button>` : ''}
                 </div>`)
             .join("");
     }
 
-    function saveComments() {
-        localStorage.setItem("comments", JSON.stringify(comments));
-        displayComments();
-    }
-
-    commentForm.addEventListener("submit", function (e) {
+    async function handleCommentSubmit(e) {
         e.preventDefault();
         const name = escapeHtml(document.getElementById("comment-name").value.trim());
         const message = escapeHtml(document.getElementById("comment-message").value.trim());
         if (name && message) {
-            comments.push({ name, message, username: getCurrentUsername(), isAdmin: isAdmin() });
-            saveComments();
-            commentForm.reset();
+            const comment = { name, message, username: getCurrentUsername(), isAdmin: isAdmin() };
+            try {
+                await fetch('/api/comments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(comment)
+                });
+                fetchComments();
+                commentForm.reset();
+            } catch (error) {
+                console.error("添加评论失败:", error);
+            }
         } else {
             alert("姓名和留言不能为空！");
         }
-    });
+    }
 
-    commentsContainer.addEventListener("click", function (e) {
-        const index = e.target.dataset.index;
+    async function handleCommentAction(e) {
+        const id = e.target.dataset.id;
         if (e.target.classList.contains("edit-comment")) {
-            const newMessage = prompt("编辑留言:", comments[index].message);
+            const newMessage = prompt("编辑留言:", e.target.parentElement.querySelector('div').textContent);
             if (newMessage !== null) {
-                comments[index].message = escapeHtml(newMessage);
-                saveComments();
+                try {
+                    await fetch(`/api/comments/${id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: escapeHtml(newMessage) })
+                    });
+                    fetchComments();
+                } catch (error) {
+                    console.error("编辑评论失败:", error);
+                }
             }
         } else if (e.target.classList.contains("delete-comment")) {
             if (confirm("确定要删除此留言吗？")) {
-                if (comments[index].username === getCurrentUsername() || isAdmin()) {
-                    comments.splice(index, 1);
-                    saveComments();
-                } else {
-                    alert("您没有权限删除此留言");
+                try {
+                    await fetch(`/api/comments/${id}`, { method: 'DELETE' });
+                    fetchComments();
+                } catch (error) {
+                    console.error("删除评论失败:", error);
                 }
             }
         }
-    });
+    }
+
+    commentForm.addEventListener("submit", handleCommentSubmit);
+    commentsContainer.addEventListener("click", handleCommentAction);
 
     function getCurrentUsername() {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -107,16 +133,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return user && user.role === 'admin';
     }
 
-    displayComments();
+    fetchComments();
 
     // 显示花篮区
     const flowerBasketGallery = document.getElementById("flower-basket-gallery");
     document.getElementById("show-flower-baskets").addEventListener("click", function () {
-        if (flowerBasketGallery.style.display === "block") {
-            flowerBasketGallery.style.display = "none";
-        } else {
-            flowerBasketGallery.style.display = "block";
-        }
+        flowerBasketGallery.style.display = flowerBasketGallery.style.display === "block" ? "none" : "block";
     });
 
     // 显示地图
@@ -126,5 +148,14 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             console.error("打开地图失败:", error);
         }
+    });
+
+    // 滚动到顶部按钮
+    const scrollToTopButton = document.getElementById("scroll-to-top");
+    window.addEventListener("scroll", () => {
+        scrollToTopButton.style.display = window.scrollY > 200 ? "block" : "none";
+    });
+    scrollToTopButton.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
