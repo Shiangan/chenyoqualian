@@ -247,3 +247,19 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* 响应式设计 */
+@media (min-width: 768px) {
+    .main-photo-section img {
+        max-width: 100%; /* 使主照片在桌面设备上最大宽度为容器的100% */
+    }
+
+    #paper-obituary {
+        max-width: 80%; /* 在桌面设备上使讣告区域宽度为80% */
+        margin: 0 auto; /* 居中显示 */
+    }
+
+    .flower-basket-item img {
+        max-width: 200px; /* 增大花篮图像在桌面设备上的最大宽度 */
+    }
+}
