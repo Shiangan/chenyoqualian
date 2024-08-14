@@ -228,6 +228,9 @@ main {
 }
 
 /* 页脚 */
+body {
+  font-family: '文鼎陳森田字體', sans-serif;
+}
 footer {
     background: #ffffff;
     border-top: 2px solid #d6e4f0;
